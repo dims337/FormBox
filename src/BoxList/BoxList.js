@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import NewBoxForm from '../NewBoxForm/NewBoxForm'
 import Box from '../Box/Box'
+import uuid from 'uuid/v4'
 
 
 
@@ -8,7 +9,7 @@ import Box from '../Box/Box'
 
 class BoxList extends Component{
     state = {
-        items:[{color:'blue', height:'100', width:'100'}]
+        items:[]
     }
 
 
@@ -19,18 +20,22 @@ class BoxList extends Component{
         }))
     }
 
-    handleDelete = (e)=>{
-
+    handleDelete = (id)=>{
+        this.setState({
+            items: this.state.items.filter(item=> item.id !== id)
+        })
     }
 
     renderBoxes=()=>{
         return (
             this.state.items.map(item=>(
                 <Box 
+            key={item.id}    
+            id={item.id}    
             color={item.color}
             height={item.height}
             width={item.width}
-            delete={this.handleDelete()}/>
+            delete={()=>this.handleDelete(item.id)}/>
             
             ))
         )

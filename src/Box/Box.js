@@ -9,9 +9,13 @@ class Box extends Component{
             width:parseInt(this.props.width)
         }
         return(
-            <div style={style}>
+            <div>
+                <div style={style}>
 
+                </div>
+                <button onClick={this.props.delete}>X</button>
             </div>
+            
         )
     }
 }

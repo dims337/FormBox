@@ -8,7 +8,7 @@ import Box from '../Box/Box'
 
 class BoxList extends Component{
     state = {
-        items:[{color:'', height:'', width:''}]
+        items:[{color:'blue', height:'100', width:'100'}]
     }
 
 
@@ -19,13 +19,19 @@ class BoxList extends Component{
         }))
     }
 
+    handleDelete = (e)=>{
+
+    }
+
     renderBoxes=()=>{
         return (
             this.state.items.map(item=>(
                 <Box 
             color={item.color}
             height={item.height}
-            width={item.width}/>
+            width={item.width}
+            delete={this.handleDelete()}/>
+            
             ))
         )
     }
